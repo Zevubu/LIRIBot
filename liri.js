@@ -41,13 +41,6 @@ let callSpotifyAPI = function(){
 let callOmbdAPI = function(){
 
 }
-// ============================
-// user input function
-// tell the program what you want it to do.
-
-let userIput = function(caseData, callData){
-
-}
 
 // =============================
 // Do what it says function!
@@ -55,6 +48,24 @@ let userIput = function(caseData, callData){
 let doWhatItSays = function(){
     
 }
+
+// ============================
+// user input function
+// tell the program what you want it to do.
+
+let userInput = function(caseData, callData){
+
+}
+
+// Finaly a function that pull my process.argv data
+
+let arguments = function(argOne, argTwo){
+    userInput(argOne, argTwo)
+}
+
+arguments(process.argv[2], process.argv[3])
+
+
 
 // Make it so liri.js can take in one of the following commands:
 //     my-tweets
