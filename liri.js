@@ -45,7 +45,44 @@ let callOmbdAPI = function(){
 // =============================
 // Do what it says function!
 
-let doWhatItSays = function(){
+let doWhatItSays = function(callData, specialData, finalData){
+    if(callData === "read"){
+        console.log("read")
+        fs.readFile('random.txt','utf8', function(error, data){
+            console.log(data);
+            let dataArr = data.split(',');
+            if(error){
+                console.log(error)
+            }
+            else if (dataArr.length === 2){
+                userInput(dataArr[0], dataArr[1])
+            }
+            else if (dataArr.length === 1){
+                userInput(dataArr[0])
+            }
+        })
+    }
+    else if (callData === "write" && (specialData === "my-tweets" || specialData === "spotify-this-song" || specialData === "movie-this") ){
+        console.log(`write ${finalData}`)
+        fs.writeFile("random.txt",`${specialData},${finalData}`, function(error,data){
+            if(error){
+                return console.log(error);
+            }
+
+            console.log(`Your wrote ${specialData},${finalData} to random.txt`)
+            userInput("do-what-it-says", "read");
+        })
+
+    }
+    else if(callData === "write"){
+        
+        console.log(`After "write" you must use one of the fallowing, my-tweets, spotify-this-song, movie-this `)
+
+    }
+    else{
+        console.log(`${callData} is not a recognized call. It must be read or write`)
+    }
+
     
 }
 
@@ -53,17 +90,38 @@ let doWhatItSays = function(){
 // user input function
 // tell the program what you want it to do.
 
-let userInput = function(caseData, callData){
+let userInput = function(caseData, callData, specialData, finalData){
+
+    switch(caseData){
+        case "my-tweets":
+            callTwitterAPI();
+        break;
+
+        case "spotify-this-song":
+            callSpotifyAPI(callData);
+        break;
+
+        case "movie-this":
+            callOmbdAPI(callData)
+        break;
+
+        case "do-what-it-says":
+            doWhatItSays(callData, specialData, finalData);
+        break;
+        
+
+    
+    }
 
 }
 
 // Finaly a function that pull my process.argv data
 
-let arguments = function(argOne, argTwo){
-    userInput(argOne, argTwo)
+let arguments = function(argOne, argTwo, argThree, argFour){
+    userInput(argOne, argTwo, argThree, argFour)
 }
 
-arguments(process.argv[2], process.argv[3])
+arguments(process.argv[2], process.argv[3],process.argv[4],process.argv[5] )
 
 
 

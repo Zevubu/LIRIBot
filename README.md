@@ -10,8 +10,10 @@ liri.js  commands:
     do-what-it-says
 
 What Each Command Should Do:
+
     node liri.js my-tweets
         This will show your last 20 tweets and when they were created at in your terminal/bash window.
+
     node liri.js spotify-this-song `<song name here>`
         This will show the following information about the song in your terminal/bash window
             Artist(s)
@@ -19,6 +21,15 @@ What Each Command Should Do:
             A preview link of the song from Spotify
             The album that the song is from
             If no song is provided then your program will default to "The Sign" by Ace of Base.
+
+    node liri.js movie-this "movie name"
+
+    node liri.js do-what-it-says read
+    or
+    node liri.js do-what-it-says write movie-this "movie name"
+
+
+
             
 You will utilize the node-spotify-api package in order to retrieve song information from the Spotify API.
 

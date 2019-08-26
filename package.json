@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/Zevubu/LIRIBot/issues"
   },
-  "homepage": "https://github.com/Zevubu/LIRIBot#readme"
+  "homepage": "https://github.com/Zevubu/LIRIBot#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "fs": "0.0.1-security",
+    "node-spotify-api": "^1.1.1",
+    "request": "^2.88.0",
+    "require": "^2.4.20",
+    "twitter": "^1.7.1"
+  }
 }
