@@ -18,6 +18,43 @@ let fs = require("fs");
 let spotify = new Spotify(keys.spotify);
 let client = new Twitter(keys.twitter);
 
+// ______________________________________
+// FUNCTIONS
+// ============================
+// twitter function
+//_______________________________________
+
+let callTwitterAPI = function(){
+
+};
+
+// ===================================
+// Spotify function
+
+let callSpotifyAPI = function(){
+
+}
+// ================================
+// OMBD function
+//_________________________________
+
+let callOmbdAPI = function(){
+
+}
+// ============================
+// user input function
+// tell the program what you want it to do.
+
+let userIput = function(caseData, callData){
+
+}
+
+// =============================
+// Do what it says function!
+
+let doWhatItSays = function(){
+    
+}
 
 // Make it so liri.js can take in one of the following commands:
 //     my-tweets
