@@ -1,9 +1,23 @@
 require("dotenv").config();
+// Add the code required to import the keys.js file and store it in a variable.
+// Import the Twitter NPM package.
+let Twitter = require("twitter");
+// import the node-spotify-api NPM package.
+let Spotify = require("node-spotify-api");
+// Import the API Keys
+let keys = require("./keys")
+// import the request npm package.
+let request = require("request");
+// import the FS package so I can read and write.
+let fs = require("fs");
+
+
 
 // Add the code required to import the keys.js file and store it in a variable.
 
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+let spotify = new Spotify(keys.spotify);
+let client = new Twitter(keys.twitter);
+
 
 // Make it so liri.js can take in one of the following commands:
 //     my-tweets
