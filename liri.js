@@ -25,6 +25,26 @@ let client = new Twitter(keys.twitter);
 //_______________________________________
 
 let callTwitterAPI = function(){
+    let params = {
+        screen_name: "ZeeLIRI"
+    };
+    client.get("statuses/user_timeline", params, function(
+    error,
+    tweets,
+    response
+    ){
+        // console.log(response)
+        console.log(tweets)
+        if(error){
+           return console.log(error);
+        }
+
+        for(let i = 0; i < tweets.length; i++){
+            console.log(tweets[i])
+        }
+
+    })
+
 
 };
 
