@@ -10,12 +10,9 @@ let keys = require("./keys")
 let request = require("request");
 // import the FS package so I can read and write.
 let fs = require("fs");
-
-
-
-// Add the code required to import the keys.js file and store it in a variable.
-
+// connect to spotify
 let spotify = new Spotify(keys.spotify);
+// connect with twitter
 let client = new Twitter(keys.twitter);
 
 // ______________________________________
@@ -41,23 +38,42 @@ let callTwitterAPI = function(){
                 console.log(tweets[i].text)
             }
         }
-        else{
-            
-        }
-
-        
-
     })
-
-
 };
 
 // ===================================
 // Spotify function
 
-let callSpotifyAPI = function(){
+let callSpotifyAPI = function(songName="gay bar", songNametwo="", songNamethree=""){
+console.log(`${songName} ${songNametwo} ${songNamethree}`)
 
-}
+    spotify.search(
+        {
+            type:"track",
+            query:songName + songNametwo + songNamethree,
+            limit: 15
+        },
+        function(error, data){
+            // console.log(JSON.stringify(data))
+            if(error){
+                return console.log(`Error occurred: ${error}`);
+            };
+            let songs = data.tracks.items;
+            // console.log(`songs: ${JSON.stringify(songs)}`)
+            console.log(`number of songs found: ${songs.length}`)
+            if (songs.length > 0){
+                
+                for (i = 0; i < songs.length; i++){
+                    console.log(`${i}: \n Artist Name: ${songs[i].artists[0].name}. \n Track Name: ${songs[i].name}. \n Track number: ${songs[i].track_number}. \n Album: ${songs[i].album.name}. \n Release date: ${songs[i].album.release_date}. \n Album type:  ${songs[i].album.album_type}. \n Preview song: ${songs[i].preview_url}. \n ----------------------------------------------------  `)
+                }
+            }
+            else{
+                console.log(` I went and looked, and I couldn't find a single song called "${songName} ${songNametwo} ${songNamethree}". \nNow if you don't mind I'd greatly appreciate it, if you stopped talking crazy.`)
+            }
+            
+        }
+    );
+};
 // ================================
 // OMBD function
 //_________________________________
@@ -100,11 +116,11 @@ let doWhatItSays = function(callData, specialData, finalData){
     }
     else if(callData === "write"){
         
-        console.log(`After "write" you must use one of the fallowing, my-tweets, spotify-this-song, movie-this `)
+        console.log(`After "write" you must use one of the fallowing: \n my-tweets,\n spotify-this-song <song name>,\n movie-this <movie name> `)
 
     }
     else{
-        console.log(`${callData} is not a recognized call. It must be read or write`)
+        console.log(`I don't know what you intended to write after "do-what-it-says", but I'll only except "read" or "write" in this circumstance.`)
     }
 
     
@@ -122,7 +138,7 @@ let userInput = function(caseData, callData, specialData, finalData){
         break;
 
         case "spotify-this-song":
-            callSpotifyAPI(callData);
+            callSpotifyAPI(callData, specialData, finalData);
         break;
 
         case "movie-this":
@@ -132,7 +148,10 @@ let userInput = function(caseData, callData, specialData, finalData){
         case "do-what-it-says":
             doWhatItSays(callData, specialData, finalData);
         break;
-        
+        default:
+        console.log(`LIRI "Kids these day's and there gosh darn babledibok way of talken! I can't understand a dang thing you're sayin!"`)
+        console.log(`Also LIRI "It's all that there hippityHop rotten there brains! That and the Telivision Games!"`)
+        console.log(`Still LIRI "In my day we respected console comands! I tell you we usssseeed...TTTTTTTOOOOOOO...ZZZZZZZ {ERROR}" `)
 
     
     }
