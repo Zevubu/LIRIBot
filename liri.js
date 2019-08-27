@@ -78,7 +78,18 @@ console.log(`${songName} ${songNametwo} ${songNamethree}`)
 // OMBD function
 //_________________________________
 
-let callOmbdAPI = function(){
+let callOmbdAPI = function(movieName="paprika"){
+    let urlHit = `http://www.omdbapi.com/?t=${movieName}&y=&plot=full&tomatoes=true&apikey=trilogy`;
+    request(urlHit, function(error, response, body){
+        if(error){
+            return console.log(error)
+        }
+        console.log(`response status code: ${response.statusCode}`)
+        let jsonData = JSON.parse(body);
+        console.log(jsonData.Title);
+        
+    })
+
 
 }
 
