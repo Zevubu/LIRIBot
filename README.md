@@ -1,13 +1,24 @@
 # LIRIBot
 LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
 
+IMPORTANT!
 You will need to supply your own .env file with your own keys for this to work.
 
-liri.js  commands:
-    my-tweets
-    spotify-this-song
-    movie-this
-    do-what-it-says
+liri.js  commands:\n
+   node liri.js my-tweets\n
+    node liri.js spotify-this-song "song name here"\n
+    node liri.js movie-this "movie name here"\n
+    node liri.js do-what-it-says read\n
+    or\n
+    node liri.js do-what-it-says write (command name to be added) "extra data name here"\n\n
+
+    More info on: do-what-it-says write...\n
+        after write you can add:\n
+            my-tweets\n
+            spotify-this-song "song name here"\n
+            movie-this "movie name here"
+   
+
 
 What Each Command Should Do:
 

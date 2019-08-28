@@ -64,7 +64,7 @@ console.log(`${songName} ${songNametwo} ${songNamethree}`)
             if (songs.length > 0){
                 
                 for (i = 0; i < songs.length; i++){
-                    console.log(`${i}: \n Artist Name: ${songs[i].artists[0].name}. \n Track Name: ${songs[i].name}. \n Track number: ${songs[i].track_number}. \n Album: ${songs[i].album.name}. \n Release date: ${songs[i].album.release_date}. \n Album type:  ${songs[i].album.album_type}. \n Preview song: ${songs[i].preview_url}. \n ----------------------------------------------------  `)
+                    console.log(`----------------------------------------------------\n${i}: \n Artist Name: ${songs[i].artists[0].name}. \n Track Name: ${songs[i].name}. \n Track number: ${songs[i].track_number}. \n Album: ${songs[i].album.name}. \n Release date: ${songs[i].album.release_date}. \n Album type:  ${songs[i].album.album_type}. \n Preview song: ${songs[i].preview_url}. \n ----------------------------------------------------  `)
                 }
             }
             else{
@@ -86,11 +86,8 @@ let callOmbdAPI = function(movieName="paprika"){
         }
         console.log(`response status code: ${response.statusCode}`)
         let jsonData = JSON.parse(body);
-        console.log(jsonData.Title);
-        
+        console.log(`----------------------------------------------------\n Title: ${jsonData.Title}\n Actors: ${jsonData.Actors}\n\n Plot: \n${jsonData.Plot}\n\n Rated: ${jsonData.Rated}\n Year: ${jsonData.Year}\n Country: ${jsonData.Country}\n Language: ${jsonData.Language}\n IMDB Rating: ${jsonData.imdbRating}\n Rotton Tomatoes Rating: ${jsonData.Ratings[1].Value}\n ----------------------------------------------------`);
     })
-
-
 }
 
 // =============================
@@ -136,6 +133,12 @@ let doWhatItSays = function(callData, specialData, finalData){
 
     
 }
+// ============================
+// instructions function type first for progam details
+let instructions = function(){
+    console.log(`liri.js commands:\n   node liri.js about\n  node liri.js my-tweets\n  node liri.js spotify-this-song "song name here"\n  node liri.js movie-this "movie name here"\n  node liri.js do-what-it-says read\n  or\n  node liri.js do-what-it-says write (command name to be added) "extra data name here"\n\n  More info on: do-what-it-says write...\n   after write you can add:\n    my-tweets\n    spotify-this-song "song name here"\n    movie-this "movie name here"`)
+}
+
 
 // ============================
 // user input function
@@ -144,6 +147,10 @@ let doWhatItSays = function(callData, specialData, finalData){
 let userInput = function(caseData, callData, specialData, finalData){
 
     switch(caseData){
+        case "about":
+            instructions();
+        break;
+
         case "my-tweets":
             callTwitterAPI();
         break;
